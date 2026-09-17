@@ -1,0 +1,8 @@
+data_backups
+Database for C.glabrata DRM_clean5.xlsx
+build_data_from_excel.py
+csv_schema
+Code
+rsconnect
+.claude
+.DS_Store

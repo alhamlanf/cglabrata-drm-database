@@ -1,0 +1,7 @@
+# local cruft — keep out of the repo
+data_backups/
+.DS_Store
+.claude/
+rsconnect/
+.Rhistory
+.RData

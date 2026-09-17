@@ -1,0 +1,5 @@
+mutation_id,alias_label,notes
+MUT0049,S659Y,"Literature typo in Pfaller 2013 (ref 82) and SENTRY 2019 (ref 23) — writes S659Y in tables, but position 659 in C. glabrata FKS2 is Phenylalanine (F), not Serine."
+MUT0213,I660_L661insF,Published as I660_L661insF in Healey 2016 (ref 4) and Cho 2014 (ref 74); residue letters inverted — CBS138 has L at 660 and I at 661.
+MUT0007,S645P (C. albicans numbering),"Older literature (Messer 2010, Pfeiffer 2010) reports isolates as S645P using C. albicans FKS1 residue numbering; the C. glabrata FKS1 homolog is S629P."
+MUT0002,S645P (C. albicans numbering),Older literature reports isolates as S645P using C. albicans FKS1 residue numbering; the C. glabrata FKS2 homolog is S663P.

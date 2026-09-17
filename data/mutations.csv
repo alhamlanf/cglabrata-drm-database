@@ -1,0 +1,333 @@
+mutation_id,excel_row,gene,hotspot,mutation_name,is_combination,wt_residue,position,mutant_residue,mutation_type,variable_phenotype,component_mutation_ids
+MUT_R002,2,FKS1,HS1,F625S,N,F,625,S,Missense,CAS and MCF,
+MUT_R003,3,FKS2,HS1,S663P,N,S,663,P,Missense,All,
+MUT_R004,4,FKS2,HS1,S663A,N,S,663,A,Missense,None,
+MUT_R005,5,multiple,multiple,F659S/S663A,Y,,,,Combination,None,MUT_R013;MUT_R004
+MUT_R006,6,multiple,multiple,F659S/S663A/D666E,Y,,,,Combination,None,MUT_R013;MUT_R004;MUT_R030
+MUT_R007,7,FKS2,Outside,G1365C,N,G,1365,C,Missense,No phenotypic test,
+MUT_R008,8,FKS1,HS1,S629P,N,S,629,P,Missense,All,
+MUT_R009,9,FKS1,HS1,D632E,N,D,632,E,Missense,None,
+MUT_R010,10,FKS1,HS1,D632Y,N,D,632,Y,Missense,All,
+MUT_R011,11,FKS1,Outside,I634V,N,I,634,V,Missense,CAS and MCF,
+MUT_R012,12,FKS2,HS1,F659del,N,F,659,del,Deletion,All,
+MUT_R013,13,FKS2,HS1,F659S,N,F,659,S,Missense,All,
+MUT_R014,14,FKS2,HS1,F659V,N,F,659,V,Missense,MCF,
+MUT_R015,15,FKS2,HS1,F659L,N,F,659,L,Missense,ANF and MCF,
+MUT_R016,16,multiple,multiple,F659L/I661F,Y,,,,Combination,None,MUT_R015;?I661F
+MUT_R017,17,FKS2,HS1,S663F,N,S,663,F,Missense,All,
+MUT_R018,18,FKS2,HS1,F658del,N,F,658,del,Deletion,CAS and MCF,
+MUT_R019,19,multiple,multiple,F658del/S663P,Y,,,,Combination,None,MUT_R018;MUT_R003
+MUT_R020,20,FKS1,HS1,F625del,N,F,625,del,Deletion,ANF,
+MUT_R021,21,multiple,multiple,F659del/L712STOP,Y,,,,Combination,None,MUT_R012;?L712STOP
+MUT_R022,22,multiple,multiple,F625del/E1117del,Y,,,,Combination,None,MUT_R020;?E1117del
+MUT_R023,23,multiple,multiple,S663Y/G680S,Y,,,,Combination,None,MUT_R024;MUT_R314
+MUT_R024,24,FKS2,HS1,S663Y,N,S,663,Y,Missense,None,
+MUT_R025,25,FKS2,HS1,L662W,N,L,662,W,Missense,ANF and MCF,
+MUT_R026,26,FKS2,Outside,A1390D,N,A,1390,D,Missense,None,
+MUT_R027,27,multiple,multiple,F658del/E655A,Y,,,,Combination,None,MUT_R018;MUT_R028
+MUT_R028,28,FKS2,Outside,E655A,N,E,655,A,Missense,MCF,
+MUT_R029,29,FKS1,HS1,F625L,N,F,625,L,Missense,None,
+MUT_R030,30,FKS2,HS1,D666E,N,D,666,E,Missense,ANF and MCF,
+MUT_R031,31,multiple,multiple,D666E/K753Q,Y,,,,Combination,CAS,MUT_R030;?K753Q
+MUT_R032,32,FKS1,HS1,S629T,N,S,629,T,Missense,None,
+MUT_R033,33,multiple,multiple,S629T/F659Y,Y,,,,Combination,None,MUT_R032;MUT_R050
+MUT_R034,34,FKS1,HS1,D632G,N,D,632,G,Missense,MCF,
+MUT_R035,35,FKS2,HS2,R1378H,N,R,1378,H,Missense,CAS,
+MUT_R036,36,multiple,multiple,R1378H/Q927R,Y,,,,Combination,None,MUT_R035;?Q927R
+MUT_R037,37,FKS1,HS1,D632V,N,D,632,V,Missense,None,
+MUT_R038,38,multiple,multiple,D632V/G1116D,Y,,,,Combination,None,MUT_R037;?G1116D
+MUT_R039,39,FKS2,HS1,F659C,N,F,659,C,Missense,MCF,
+MUT_R040,40,FKS1,HS1,D632H,N,D,632,H,Missense,CAS,
+MUT_R041,41,multiple,multiple,D632H/K652/Y653/Y682/I70T647/K652/I706,Y,,,,Combination,None,MUT_R040;?K652;?Y653;?Y682;?I70T647;?K652;?I706
+MUT_R042,42,multiple,multiple,T647/K652/I706,Y,,,,Combination,None,?T647;?K652;?I706
+MUT_R043,43,multiple,multiple,A742/T647/K652/I706,Y,,,,Combination,CAS,MUT_R054;?T647;?K652;?I706
+MUT_R044,44,multiple,multiple,A742/K652/Y653/Y682/I706,Y,,,,Combination,None,MUT_R054;?K652;?Y653;?Y682;?I706
+MUT_R045,45,multiple,multiple,A742/K652/Y653,Y,,,,Combination,None,MUT_R054;?K652;?Y653
+MUT_R046,46,multiple,multiple,A742/W639,Y,,,,Combination,CAS,MUT_R054;MUT_R055
+MUT_R047,47,multiple,multiple,K652/Y653/Y682/I706,Y,,,,Combination,None,?K652;?Y653;?Y682;?I706
+MUT_R048,48,multiple,multiple,I661T/W639,Y,,,,Combination,None,MUT_R049;MUT_R055
+MUT_R049,49,FKS2,HS1,I661T,N,I,661,T,Missense,None,
+MUT_R050,50,FKS2,HS1,F659Y,N,F,659,Y,Missense,ANF and MCF,
+MUT_R051,51,multiple,multiple,F659Y/I1333F,Y,,,,Combination,None,MUT_R050;?I1333F
+MUT_R052,52,multiple,multiple,F625S/F659Y,Y,,,,Combination,None,MUT_R002;MUT_R050
+MUT_R053,53,FKS2,Outside,F708V,N,F,708,V,Missense,No phenotypic test,
+MUT_R054,54,FKS1,Outside,A742,N,A,742,,Position only,None,
+MUT_R055,55,FKS2,Outside,W639,N,W,639,,Position only,None,
+MUT_R056,56,FKS2,Outside,W1497*,N,W,1497,*,Premature stop,None,
+MUT_R057,57,FKS2,HS1,P667T,N,P,667,T,Missense,ANF and MCF,
+MUT_R058,58,multiple,multiple,L664V/F659I,Y,,,,Combination,No phenotypic test,?L664V;MUT_R060
+MUT_R059,59,multiple,multiple,L664V/F659S,Y,,,,Combination,No phenotypic test,?L664V;MUT_R013
+MUT_R060,60,FKS2,HS1,F659I,N,F,659,I,Missense,None,
+MUT_R061,61,FKS2,HS1,D666G,N,D,666,G,Missense,ANF and MCF,
+MUT_R062,62,FKS2,HS2,R1378C,N,R,1378,C,Missense,None,
+MUT_R063,63,FKS2,Outside,E291V,N,E,291,V,Missense,None,
+MUT_R064,64,FKS2,Outside,T1165I,N,T,1165,I,Missense,None,
+MUT_R065,65,multiple,multiple,S629P/W1530R,Y,,,,Combination,None,MUT_R008;?W1530R
+MUT_R066,66,FKS2,HS1,D666N,N,D,666,N,Missense,ANF,
+MUT_R067,67,FKS1,HS1,P633T,N,P,633,T,Missense,None,
+MUT_R068,68,multiple,multiple,P633T/S1293P/D666N,Y,,,,Combination,None,MUT_R067;?S1293P;MUT_R066
+MUT_R069,69,FKS1,Outside,Y3D,N,Y,3,D,Missense,None,
+MUT_R070,70,multiple,multiple,Y3D/S301P,Y,,,,Combination,None,MUT_R069;?S301P
+MUT_R071,71,multiple,multiple,Y3D/W929del/S663F,Y,,,,Combination,None,MUT_R069;?W929del;MUT_R017
+MUT_R072,72,FKS1,Outside,A1107V,N,A,1107,V,Missense,CAS,
+MUT_R073,73,FKS1,Outside,G75D,N,G,75,D,Missense,None,
+MUT_R074,74,FKS1,Outside,A1453V,N,A,1453,V,Missense,None,
+MUT_R075,75,FKS2,Outside,Q12K,N,Q,12,K,Missense,None,
+MUT_R076,76,multiple,multiple,Q12K/K1867N,Y,,,,Combination,None,MUT_R075;?K1867N
+MUT_R077,77,multiple,multiple,Q12K/S663F,Y,,,,Combination,None,MUT_R075;MUT_R017
+MUT_R078,78,FKS1,Outside,F68L,N,F,68,L,Missense,CAS,
+MUT_R079,79,FKS1,Outside,F1335L,N,F,1335,L,Missense,None,
+MUT_R080,80,FKS2,Outside,E78D,N,E,78,D,Missense,None,
+MUT_R081,81,FKS2,Outside,T926P,N,T,926,P,Missense,None,
+MUT_R082,82,FKS2,Outside,F1466Y,N,F,1466,Y,Missense,No phenotypic test,
+MUT_R083,83,multiple,multiple,R631S/S629P,Y,,,,Combination,None,?R631S;MUT_R008
+MUT_R084,84,FKS1,HS1,L630I,N,L,630,I,Missense,All,
+MUT_R085,85,FKS2,Outside,L644W,N,L,644,W,Missense,All,
+MUT_R086,86,FKS2,Outside,F641V,N,F,641,V,Missense,None,
+MUT_R087,87,FKS2,Outside,D648E,N,D,648,E,Missense,CAS,
+MUT_R088,88,FKS1,HS1,F625Y,N,F,625,Y,Missense,ANF and CAS,
+MUT_R089,89,FKS2,Outside,F641Y,N,F,641,Y,Missense,CAS and MCF,
+MUT_R090,90,multiple,multiple,K753Q/D666E,Y,,,,Combination,None,?K753Q;MUT_R030
+MUT_R091,91,FKS1,Outside,Y748del,N,Y,748,del,Deletion,No phenotypic test,
+MUT_R092,92,multiple,multiple,S629F/D632A,Y,,,,Combination,None,?S629F;?D632A
+MUT_R093,93,FKS1,HS1,F625I,N,F,625,I,Missense,No phenotypic test,
+MUT_R094,94,FKS2,Outside,F708S,N,F,708,S,Missense,None,
+MUT_R095,95,multiple,multiple,R1422L/F708S,Y,,,,Missense,None,?R1422L;MUT_R094
+MUT_R096,96,FKS2,HS2,R1378S,N,R,1378,S,Missense,MCF,
+MUT_R097,97,multiple,multiple,F659del/R1378S,Y,,,,Combination,None,MUT_R012;MUT_R096
+MUT_R098,98,multiple,multiple,S663P/A651V,Y,,,,Combination,None,MUT_R003;?A651V
+MUT_R099,99,multiple,multiple,F659del/W1375R,Y,,,,Combination,None,MUT_R012;?W1375R
+MUT_R100,100,multiple,multiple,Y748*/F659del/L707Q,Y,,,,Combination,None,?Y748*;MUT_R012;?L707Q
+MUT_R101,101,multiple,multiple,F625S/D666N,Y,,,,Combination,None,MUT_R002;MUT_R066
+MUT_R102,102,multiple,multiple,W605*/D666V,Y,,,,Combination,None,?W605*;MUT_R170
+MUT_R103,103,multiple,multiple,A651V/F659del,Y,,,,Combination,None,?A651V;MUT_R012
+MUT_R104,104,multiple,multiple,F659del/S654Y,Y,,,,Combination,None,MUT_R012;?S654Y
+MUT_R105,105,multiple,multiple,L662W/R1378C,Y,,,,Combination,None,MUT_R025;MUT_R062
+MUT_R106,106,multiple,multiple,W611*/L662W,Y,,,,Combination,None,?W611*;MUT_R025
+MUT_R107,107,multiple,multiple,W681*/F659del,Y,,,,Combination,None,?W681*;MUT_R012
+MUT_R108,108,multiple,multiple,F659I/R1378L,Y,,,,Combination,None,MUT_R060;?R1378L
+MUT_R109,109,multiple,multiple,F659del/Y1379N,Y,,,,Combination,None,MUT_R012;?Y1379N
+MUT_R110,110,multiple,multiple,I1385T/S663P,Y,,,,Combination,None,?I1385T;MUT_R003
+MUT_R111,111,multiple,multiple,L662F/P667T,Y,,,,Combination,None,?L662F;MUT_R057
+MUT_R112,112,multiple,multiple,Y748*/F659del/L707Q,Y,,,,Combination,None,?Y748*;MUT_R012;?L707Q
+MUT_R113,113,multiple,multiple,A1390T/F659del/L664Q,Y,,,,Combination,None,?A1390T;MUT_R012;?L664Q
+MUT_R114,114,multiple,multiple,D666N/L1381F/P1371S,Y,,,,Combination,None,MUT_R066;?L1381F;MUT_R173
+MUT_R115,115,multiple,multiple,D666N/L1381F/Q1428K,Y,,,,Combination,None,MUT_R066;?L1381F;?Q1428K
+MUT_R116,116,multiple,multiple,F659del/L664R/R1378L,Y,,,,Combination,None,MUT_R012;MUT_R222;?R1378L
+MUT_R117,117,multiple,multiple,D632G/N686S/E805*,Y,,,,Combination,None,MUT_R034;?N686S;?E805*
+MUT_R118,118,multiple,multiple,D632G/D666Y/F659L,Y,,,,Combination,None,MUT_R034;MUT_R223;MUT_R015
+MUT_R119,119,multiple,multiple,D632N/P633S/V1362M,Y,,,,Combination,None,?D632N;?P633S;?V1362M
+MUT_R120,120,multiple,multiple,E621K/D666Y/F659del,Y,,,,Combination,None,?E621K;MUT_R223;MUT_R012
+MUT_R121,121,multiple,multiple,P633Q/S629P,Y,,,,Combination,None,?P633Q;MUT_R008
+MUT_R122,122,multiple,multiple,Y623*/A651T/F659del,Y,,,,Combination,None,?Y623*;?A651T;MUT_R012
+MUT_R123,123,multiple,multiple,F1324L/F659del,Y,,,,Combination,None,?F1324L;MUT_R012
+MUT_R124,124,multiple,multiple,F659del/Y1379H,Y,,,,Combination,None,MUT_R012;?Y1379H
+MUT_R125,125,multiple,multiple,D632N/L628I,Y,,,,Combination,None,?D632N;?L628I
+MUT_R126,126,multiple,multiple,F625del/F659I/P667T,Y,,,,Combination,None,MUT_R020;MUT_R060;MUT_R057
+MUT_R127,127,multiple,multiple,P633T/S656L,Y,,,,Combination,None,MUT_R067;?S656L
+MUT_R128,128,multiple,multiple,W611*/F659Y,Y,,,,Combination,None,?W611*;MUT_R050
+MUT_R129,129,multiple,multiple,L1381F/R1378C/R665G,Y,,,,Combination,None,?L1381F;MUT_R062;MUT_R226
+MUT_R130,130,multiple,multiple,D632E/E1423Q/R1378S,Y,,,,Combination,None,MUT_R009;?E1423Q;MUT_R096
+MUT_R131,131,multiple,multiple,R643*/F659Y/N1354Y,Y,,,,Combination,None,?R643*;MUT_R050;?N1354Y
+MUT_R132,132,multiple,multiple,S652*/F659del,Y,,,,Combination,None,?S652*;MUT_R012
+MUT_R133,133,multiple,multiple,F659S/R1378S,Y,,,,Combination,None,MUT_R013;MUT_R096
+MUT_R134,134,multiple,multiple,D632E/I670fs,Y,,,,Combination,None,MUT_R009;?I670fs
+MUT_R135,135,multiple,multiple,D632G/F625I,Y,,,,Combination,None,MUT_R034;MUT_R093
+MUT_R136,136,multiple,multiple,D632N/I717N/R1378H,Y,,,,Combination,None,?D632N;?I717N;MUT_R035
+MUT_R137,137,multiple,multiple,D632Y/S629P,Y,,,,Combination,None,MUT_R010;MUT_R008
+MUT_R138,138,multiple,multiple,D632Y/S663P,Y,,,,Combination,None,MUT_R010;MUT_R003
+MUT_R139,139,multiple,multiple,D666Y/F659del,Y,,,,Combination,None,MUT_R223;MUT_R012
+MUT_R140,140,multiple,multiple,D632E/F625L/E761*,Y,,,,Combination,None,MUT_R009;MUT_R029;?E761*
+MUT_R141,141,multiple,multiple,D632E/F625Y,Y,,,,Combination,None,MUT_R009;MUT_R088
+MUT_R142,142,multiple,multiple,D632Y/F659L/R1378L,Y,,,,Combination,None,MUT_R010;MUT_R015;?R1378L
+MUT_R143,143,multiple,multiple,D632Y/S656L,Y,,,,Combination,None,MUT_R010;?S656L
+MUT_R144,144,multiple,multiple,F625del/L714F/P667T,Y,,,,Combination,None,MUT_R020;?L714F;MUT_R057
+MUT_R145,145,multiple,multiple,L628fs/F659del,Y,,,,Combination,None,?L628fs;MUT_R012
+MUT_R146,146,multiple,multiple,W650*/F659del,Y,,,,Combination,None,?W650*;MUT_R012
+MUT_R147,147,multiple,multiple,D666G/F659del,Y,,,,Combination,None,MUT_R061;MUT_R012
+MUT_R148,148,multiple,multiple,D666N/L662F,Y,,,,Combination,None,MUT_R066;?L662F
+MUT_R149,149,multiple,multiple,A617V/D632Y,Y,,,,Combination,None,?A617V;MUT_R010
+MUT_R150,150,multiple,multiple,P633A/A651V/L664I/R1378H,Y,,,,Combination,None,?P633A;?A651V;?L664I;MUT_R035
+MUT_R151,151,multiple,multiple,R1422L/F708S,Y,,,,Combination,None,?R1422L;MUT_R094
+MUT_R152,152,multiple,multiple,R643*/I661M/P667T,Y,,,,Combination,None,?R643*;?I661M;MUT_R057
+MUT_R153,153,multiple,multiple,S629P/D666E,Y,,,,Combination,None,MUT_R008;MUT_R030
+MUT_R154,154,multiple,multiple,F659L/W715L,Y,,,,Combination,None,MUT_R015;MUT_R239
+MUT_R155,155,multiple,multiple,F659del/W1375C,Y,,,,Combination,None,MUT_R012;?W1375C
+MUT_R156,156,multiple,multiple,D632V/S663P,Y,,,,Combination,None,MUT_R037;MUT_R003
+MUT_R157,157,multiple,multiple,D632Y/L660S/R1378H,Y,,,,Combination,None,MUT_R010;?L660S;MUT_R035
+MUT_R158,158,multiple,multiple,F625V/H785N/W683*,Y,,,,Combination,None,?F625V;?H785N;?W683*
+MUT_R159,159,multiple,multiple,W705*/F659del/P1371S,Y,,,,Combination,None,?W705*;MUT_R012;MUT_R173
+MUT_R160,160,multiple,multiple,Y763*/D1374N/F659del,Y,,,,Combination,None,?Y763*;?D1374N;MUT_R012
+MUT_R161,161,multiple,multiple,A1343G/F659del,Y,,,,Combination,None,?A1343G;MUT_R012
+MUT_R162,162,multiple,multiple,F659C/R1378L,Y,,,,Combination,None,MUT_R039;?R1378L
+MUT_R163,163,multiple,multiple,E621K/Q1397R/R1378S,Y,,,,Combination,None,?E621K;?Q1397R;MUT_R096
+MUT_R164,164,multiple,multiple,F659del/R665G,Y,,,,Combination,None,MUT_R012;MUT_R226
+MUT_R165,165,multiple,multiple,D666N/F659S,Y,,,,Combination,None,MUT_R066;MUT_R013
+MUT_R166,166,multiple,multiple,F625Y/Y1379*,Y,,,,Combination,None,MUT_R088;?Y1379*
+MUT_R167,167,multiple,multiple,L628I/S663F,Y,,,,Combination,None,?L628I;MUT_R017
+MUT_R168,168,multiple,multiple,F659del/S663C,Y,,,,Combination,None,MUT_R012;?S663C
+MUT_R169,169,FKS2,HS2,R1378S or R1378G,N,R,1378,S or R1378G,Missense,ANF and MCF,
+MUT_R170,170,FKS2,HS1,D666V,N,D,666,V,Missense,None,
+MUT_R171,171,multiple,multiple,D666V/R631G,Y,,,,Combination,None,MUT_R170;MUT_R219
+MUT_R172,172,FKS2,HS1,P667H,N,P,667,H,Missense,MCF,
+MUT_R173,173,FKS2,Outside,P1371S,N,P,1371,S,Missense,None,
+MUT_R174,174,FKS2,Outside,D430E,N,D,430,E,Missense,No phenotypic test,
+MUT_R175,175,FKS2,Outside,E784G,N,E,784,G,Missense,No phenotypic test,
+MUT_R176,176,FKS1,Outside,S1846N,N,S,1846,N,Missense,No phenotypic test,
+MUT_R177,177,FKS1,Outside,P223S,N,P,223,S,Missense,No phenotypic test,
+MUT_R178,178,FKS1,Outside,A404_P405insPPAPPAPPAPPAPPA,N,A,404,_P405insPPAPPAPPAPPAPPA,Insertion,No phenotypic test,
+MUT_R179,179,FKS1,Outside,K14T,N,K,14,T,Missense,No phenotypic test,
+MUT_R180,180,FKS1,Outside,I639T,N,I,639,T,Missense,No phenotypic test,
+MUT_R181,181,FKS1,Outside,T652S,N,T,652,S,Missense,No phenotypic test,
+MUT_R182,182,FKS1,Outside,A91S,N,A,91,S,Missense,No phenotypic test,
+MUT_R183,183,FKS1,Outside,S275fs,N,S,275,fs,Frameshift,No phenotypic test,
+MUT_R184,184,FKS1,Outside,M290I,N,M,290,I,Missense,No phenotypic test,
+MUT_R185,185,FKS1,Outside,R1267K,N,R,1267,K,Missense,No phenotypic test,
+MUT_R186,186,FKS1,Outside,W511del,N,W,511,del,Deletion,No phenotypic test,
+MUT_R187,187,FKS1,Outside,P29L,N,P,29,L,Missense,No phenotypic test,
+MUT_R188,188,FKS2,Outside,K452fs,N,K,452,fs,Frameshift,No phenotypic test,
+MUT_R189,189,FKS2,Outside,V586_S590del,N,V,586,_S590del,Deletion,No phenotypic test,
+MUT_R190,190,FKS2,Outside,V699_S703del,N,V,699,_S703del,Deletion,No phenotypic test,
+MUT_R191,191,FKS2,Outside,I76T,N,I,76,T,Missense,No phenotypic test,
+MUT_R192,192,FKS2,Outside,P552S,N,P,552,S,Missense,No phenotypic test,
+MUT_R193,193,FKS2,Outside,P316T,N,P,316,T,Missense,No phenotypic test,
+MUT_R194,194,FKS2,Outside,D259N,N,D,259,N,Missense,No phenotypic test,
+MUT_R195,195,FKS2,Outside,S179F,N,S,179,F,Missense,No phenotypic test,
+MUT_R196,196,FKS2,Outside,E739Q,N,E,739,Q,Missense,No phenotypic test,
+MUT_R197,197,FKS2,Outside,N1312K,N,N,1312,K,Missense,No phenotypic test,
+MUT_R198,198,FKS2,Outside,N564H,N,N,564,H,Missense,No phenotypic test,
+MUT_R199,199,FKS2,Outside,P116S,N,P,116,S,Missense,No phenotypic test,
+MUT_R200,200,FKS2,Outside,R32G,N,R,32,G,Missense,No phenotypic test,
+MUT_R201,201,FKS1,Outside,P253L,N,P,253,L,Missense,No phenotypic test,
+MUT_R202,202,FKS1,Outside,G105D,N,G,105,D,Missense,No phenotypic test,
+MUT_R203,203,FKS1,Outside,Q403L,N,Q,403,L,Missense,No phenotypic test,
+MUT_R204,204,FKS1,Outside,M411L,N,M,411,L,Missense,No phenotypic test,
+MUT_R205,205,FKS1,Outside,N131D,N,N,131,D,Missense,No phenotypic test,
+MUT_R206,206,FKS1,Outside,W204R,N,W,204,R,Missense,No phenotypic test,
+MUT_R207,207,FKS2,Outside,L46P,N,L,46,P,Missense,No phenotypic test,
+MUT_R208,208,FKS2,Outside,D88H,N,D,88,H,Missense,No phenotypic test,
+MUT_R209,209,FKS2,Outside,G672E,N,G,672,E,Missense,No phenotypic test,
+MUT_R210,210,FKS2,Outside,Y181C,N,Y,181,C,Missense,No phenotypic test,
+MUT_R211,211,FKS2,Outside,P201S,N,P,201,S,Missense,No phenotypic test,
+MUT_R212,212,FKS2,Outside,G174R,N,G,174,R,Missense,No phenotypic test,
+MUT_R213,213,FKS2,Outside,T98fs,N,T,98,fs,Frameshift,No phenotypic test,
+MUT_R214,214,FKS2,Outside,M1184I,N,M,1184,I,Missense,No phenotypic test,
+MUT_R215,215,FKS2,Outside,I256T,N,I,256,T,Missense,No phenotypic test,
+MUT_R216,216,FKS2,Outside,K171E,N,K,171,E,Missense,CAS,
+MUT_R217,217,FKS2,Outside,P155S,N,P,155,S,Missense,None,
+MUT_R218,218,FKS2,HS2,I1379V (literature label),N,I,1379,V (literature label),Missense,None,
+MUT_R219,219,FKS1,HS1,R631G,N,R,631,G,Missense,All,
+MUT_R220,220,FKS2,HS1,R665S,N,R,665,S,Missense,None,
+MUT_R221,221,FKS2,Outside,R655G,N,R,655,G,Missense,None,
+MUT_R222,222,FKS2,HS1,L664R,N,L,664,R,Missense,None,
+MUT_R223,223,FKS2,HS1,D666Y,N,D,666,Y,Missense,All,
+MUT_R224,224,FKS2,HS1,D666H,N,D,666,H,Missense,None,
+MUT_R225,225,multiple,multiple,F659del/D666N,Y,,,,Combination,None,MUT_R012;MUT_R066
+MUT_R226,226,FKS2,HS1,R665G,N,R,665,G,Missense,ANF and CAS,
+MUT_R227,227,FKS1,HS1,F625C,N,F,625,C,Missense,MCF,
+MUT_R228,228,multiple,multiple,S663P/D666Y,Y,,,,Combination,None,MUT_R003;MUT_R223
+MUT_R229,229,FKS1,Outside,W508STOP,N,W,508,STOP,Premature stop,None,
+MUT_R230,230,multiple,multiple,W508STOP/E655K,Y,,,,Combination,None,MUT_R229;MUT_R238
+MUT_R231,231,FKS2,HS2,W1375L,N,W,1375,L,Missense,None,
+MUT_R232,232,FKS2,HS2,R1377STOP,N,R,1377,STOP,Premature stop,None,
+MUT_R233,233,multiple,multiple,D632Y/R1377STOP,Y,,,,Combination,None,MUT_R010;MUT_R232
+MUT_R234,234,FKS2,HS2,R1377K,N,R,1377,K,Missense,ANF and MCF,
+MUT_R235,235,FKS1,Outside,I1271V,N,I,1271,V,Missense,No phenotypic test,
+MUT_R236,236,FKS2,Outside,T928P,N,T,928,P,Missense,None,
+MUT_R237,237,multiple,multiple,W645STOP/S663P,Y,,,,Combination,None,?W645STOP;MUT_R003
+MUT_R238,238,FKS2,Outside,E655K,N,E,655,K,Missense,None,
+MUT_R239,239,FKS2,Outside,W715L,N,W,715,L,Missense,None,
+MUT_R240,240,multiple,multiple,F658del/W715L,Y,,,,Combination,None,MUT_R018;MUT_R239
+MUT_R241,241,FKS2,HS1,L660_I661insF,N,L,660,_I661insF,Insertion,None,
+MUT_R242,242,FKS1,HS2,V1342I,N,V,1342,I,Missense,None,
+MUT_R243,243,multiple,multiple,S629P/R631S,Y,,,,Combination,None,MUT_R008;?R631S
+MUT_R244,244,FKS1,Outside,K1319R,N,K,1319,R,Missense,None,
+MUT_R245,245,FKS1,Outside,I1314L,N,I,1314,L,Missense,None,
+MUT_R246,246,FKS1,Outside,K1323E,N,K,1323,E,Missense,None,
+MUT_R247,247,multiple,multiple,K1323E/Y1825fs,Y,,,,Combination,None,MUT_R246;?Y1825fs
+MUT_R248,248,FKS1,Outside,S1398A,N,S,1398,A,Missense,No phenotypic test,
+MUT_R249,249,FKS1,Outside,L1404M,N,L,1404,M,Missense,No phenotypic test,
+MUT_R250,250,FKS1,Outside,G1434S,N,G,1434,S,Missense,No phenotypic test,
+MUT_R251,251,FKS1,Outside,S1502N,N,S,1502,N,Missense,No phenotypic test,
+MUT_R252,252,FKS1,Outside,R1506K,N,R,1506,K,Missense,No phenotypic test,
+MUT_R253,253,FKS1,Outside,V1528I,N,V,1528,I,Missense,No phenotypic test,
+MUT_R254,254,FKS1,Outside,E1531D,N,E,1531,D,Missense,No phenotypic test,
+MUT_R255,255,FKS1,Outside,S1540N,N,S,1540,N,Missense,No phenotypic test,
+MUT_R256,256,FKS2,Outside,K1357E,N,K,1357,E,Missense,No phenotypic test,
+MUT_R257,257,FKS1,HS1,F625,N,F,625,,Position only,No phenotypic test,
+MUT_R258,258,FKS1,HS1,S629,N,S,629,,Position only,No phenotypic test,
+MUT_R259,259,FKS1,HS1,R631,N,R,631,,Position only,No phenotypic test,
+MUT_R260,260,FKS1,HS1,D632,N,D,632,,Position only,No phenotypic test,
+MUT_R261,261,FKS1,HS1,P633,N,P,633,,Position only,No phenotypic test,
+MUT_R262,262,FKS2,HS1,F659,N,F,659,,Position only,No phenotypic test,
+MUT_R263,263,FKS2,HS1,L660,N,L,660,,Position only,No phenotypic test,
+MUT_R264,264,FKS2,HS1,L662,N,L,662,,Position only,No phenotypic test,
+MUT_R265,265,FKS2,HS1,S663,N,S,663,,Position only,No phenotypic test,
+MUT_R266,266,FKS1,HS2,W1341,N,W,1341,,Position only,No phenotypic test,
+MUT_R267,267,FKS2,HS1,R665,N,R,665,,Position only,No phenotypic test,
+MUT_R268,268,FKS2,HS1,D666,N,D,666,,Position only,No phenotypic test,
+MUT_R269,269,FKS2,HS1,P667,N,P,667,,Position only,No phenotypic test,
+MUT_R270,270,FKS2,HS2,W1375,N,W,1375,,Position only,No phenotypic test,
+MUT_R271,271,FKS2,HS2,R1377,N,R,1377,,Position only,No phenotypic test,
+MUT_R272,272,FKS2,HS2,R1378,N,R,1378,,Position only,No phenotypic test,
+MUT_R273,273,FKS1,Outside,D623E,N,D,623,E,Missense,None,
+MUT_R274,274,FKS1,Outside,R636S,N,R,636,S,Missense,None,
+MUT_R275,275,multiple,multiple,R631G/S663P,Y,,,,Combination,None,MUT_R219;MUT_R003
+MUT_R276,276,multiple,multiple,S629P/D666V,Y,,,,Combination,ANF,MUT_R008;MUT_R170
+MUT_R277,277,multiple,multiple,S629P/W1497STOP,Y,,,,Combination,None,MUT_R008;MUT_R056
+MUT_R278,278,FKS1,HS1,L628R,N,L,628,R,Missense,None,
+MUT_R279,279,FKS1,HS1,L630Q,N,L,630,Q,Missense,None,
+MUT_R280,280,multiple,multiple,L630Q/S663F,Y,,,,Combination,None,MUT_R279;MUT_R017
+MUT_R281,281,FKS1,Outside,G14S,N,G,14,S,Missense,No phenotypic test,
+MUT_R282,282,FKS1,Outside,D892E,N,D,892,E,Missense,No phenotypic test,
+MUT_R283,283,FKS1,Outside,Y477H,N,Y,477,H,Missense,No phenotypic test,
+MUT_R284,284,FKS1,Outside,F1727C,N,F,1727,C,Missense,No phenotypic test,
+MUT_R285,285,FKS1,Outside,A1436V,N,A,1436,V,Missense,No phenotypic test,
+MUT_R286,286,FKS1,Outside,T307,N,T,307,,Position only,No phenotypic test,
+MUT_R287,287,FKS1,Outside,F1055del,N,F,1055,del,Deletion,No phenotypic test,
+MUT_R288,288,FKS1,Outside,A1633T,N,A,1633,T,Missense,No phenotypic test,
+MUT_R289,289,FKS1,Outside,A597ins,N,A,597,ins,Missense,No phenotypic test,
+MUT_R290,290,FKS2,Outside,G1284R,N,G,1284,R,Missense,No phenotypic test,
+MUT_R291,291,FKS2,Outside,W1495del,N,W,1495,del,Deletion,No phenotypic test,
+MUT_R292,292,FKS2,Outside,Q1704del,N,Q,1704,del,Deletion,No phenotypic test,
+MUT_R293,293,FKS2,Outside,Q388del,N,Q,388,del,Deletion,No phenotypic test,
+MUT_R294,294,FKS2,Outside,F30V,N,F,30,V,Missense,No phenotypic test,
+MUT_R295,295,FKS2,Outside,N120K,N,N,120,K,Missense,No phenotypic test,
+MUT_R296,296,FKS2,Outside,A122V,N,A,122,V,Missense,No phenotypic test,
+MUT_R297,297,FKS2,Outside,P1150Q,N,P,1150,Q,Missense,No phenotypic test,
+MUT_R298,298,FKS2,Outside,T1155S,N,T,1155,S,Missense,No phenotypic test,
+MUT_R299,299,FKS2,Outside,K1164N,N,K,1164,N,Missense,No phenotypic test,
+MUT_R300,300,FKS2,Outside,S481P,N,S,481,P,Missense,No phenotypic test,
+MUT_R301,301,multiple,multiple,F625S/F659del,Y,,,,Combination,None,MUT_R002;MUT_R012
+MUT_R302,302,multiple,multiple,S629P/S663P,Y,,,,Combination,None,MUT_R008;MUT_R003
+MUT_R303,303,multiple,multiple,S629P/R665G,Y,,,,Combination,None,MUT_R008;MUT_R226
+MUT_R304,304,multiple,multiple,R635G/I661F,Y,,,,Combination,None,?R635G;?I661F
+MUT_R305,305,FKS1,Outside,S502F,N,S,502,F,Missense,None,
+MUT_R306,306,FKS1,Outside,A126T,N,A,126,T,Missense,None,
+MUT_R307,307,FKS2,Outside,F384Y,N,F,384,Y,Missense,None,
+MUT_R308,308,FKS2,Outside,A405T,N,A,405,T,Missense,None,
+MUT_R309,309,FKS1,Outside,A995T,N,A,995,T,Missense,None,
+MUT_R310,310,multiple,multiple,Y1279F/T926P,Y,,,,Combination,None,?Y1279F;MUT_R081
+MUT_R311,311,FKS1,Outside,L195F,N,L,195,F,Missense,None,
+MUT_R312,312,multiple,multiple,D140Y/A1749V,Y,,,,Combination,None,?D140Y;MUT_R313
+MUT_R313,313,FKS1,Outside,A1749V,N,A,1749,V,Missense,None,
+MUT_R314,314,FKS2,Outside,G680S,N,G,680,S,Missense,None,
+MUT_R315,315,FKS2,Outside,A450T,N,A,450,T,Missense,None,
+MUT_R316,316,multiple,multiple,E78D/T926P,Y,,,,Combination,ANF and CAS,MUT_R080;MUT_R081
+MUT_R317,317,multiple,multiple,L662W/E78D/T926P,Y,,,,Combination,None,MUT_R025;MUT_R080;MUT_R081
+MUT_R318,318,multiple,multiple,S663P/T926P,Y,,,,Combination,None,MUT_R003;MUT_R081
+MUT_R319,319,multiple,multiple,S663F/T926P,Y,,,,Combination,None,MUT_R017;MUT_R081
+MUT_R320,320,multiple,multiple,G14S/T926P,Y,,,,Combination,All,MUT_R281;MUT_R081
+MUT_R321,321,multiple,multiple,G14S/T926P/F659del,Y,,,,Combination,None,MUT_R281;MUT_R081;MUT_R012
+MUT_R322,322,multiple,multiple,Gene conversion (FKS2-to-FKS1; M555T/V558I/L563V/V568I/T583S/H600Q/A620S)+ Y623del in/near HS1,Y,,,,Combination,None,?Gene conversion (FKS2-to-FKS1; M555T;?V558I;?L563V;?V568I;?T583S;?H600Q;?A620S)+ Y623del in;?near HS1
+MUT_R323,323,multiple,multiple,F659del/L1767del,Y,,,,Combination,None,MUT_R012;?L1767del
+MUT_R324,324,FKS2,Outside,S645F,N,S,645,F,Missense,None,
+MUT_R325,325,FKS2,Outside,L646R,N,L,646,R,Missense,None,
+MUT_R326,326,FKS2,Outside,L632R,N,L,632,R,Missense,None,
+MUT_R327,327,FKS1,Outside,S654P,N,S,654,P,Missense,ANF,
+MUT_R328,328,FKS2,Outside,K1357M,N,K,1357,M,Missense,None,
+MUT_R329,329,FKS2,Outside,I1174V,N,I,1174,V,Missense,None,
+MUT_R330,330,FKS1,Outside,F592L,N,F,592,L,Missense,None,
+MUT_R331,331,multiple,multiple,Q590K/F592L,Y,,,,Combination,None,?Q590K;MUT_R330
+MUT_R332,332,multiple,multiple,S629P/I1376V,Y,,,,Combination,None,MUT_R008;?I1376V
+MUT_R333,333,FKS1,HS1,L628P,N,L,628,P,Missense,None,
