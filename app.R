@@ -5,9 +5,8 @@
 # Nakaseomyces glabratus (Candida glabrata) and their reported echinocandin
 # resistance phenotype.  Reference-lookup tool, NOT a diagnostic.
 #
-# Single-file app.R holding both:
-#   Stage 1 — search + filter + results table + detail panel
-#   Stage 2 — lollipop / needle plot (FKS1 above, FKS2 below)
+# Single-file app.R:
+#   Search + filter + results table + detail panel, plus a Terms of Use tab.
 #
 # Data lives in ./data as four CSVs (see PROJECT_BRIEF.md for the schema).
 # Every non-obvious line is commented for readers new to Shiny/R.
@@ -21,51 +20,11 @@ suppressPackageStartupMessages({
   library(readr)
   library(stringr)
   library(DT)
-  library(ggplot2)
-  library(plotly)
 })
-
-# ---- Constants: hot-spot boundaries (locked in PROJECT_BRIEF) ---------------
-# Position ranges are used to shade the lollipop plot.  We shade purely by
-# position (not by the `hotspot` column) because a handful of source rows have
-# placeholder values in that column — position is the reliable signal.
-HOTSPOTS <- list(
-  FKS1 = list(HS1 = c(625, 633), HS2 = c(1340, 1347)),
-  FKS2 = list(HS1 = c(659, 667), HS2 = c(1374, 1381))
-)
 
 # ---- Colour conventions ------------------------------------------------------
 # Phenotype colours are the universal CLSI/EUCAST convention (locked in brief).
 PHENO_COLORS <- c(R = "#c0392b", I = "#e67e22", S = "#27ae60")
-
-# Mutation-type colours for the lollipop — the Okabe-Ito palette, the accepted
-# colour-blind-safe scheme for scientific figures. Truncating events (premature
-# stop) take black by genomics convention; the light Okabe-Ito yellow is omitted
-# because it is illegible on a white surface. Assignment is fixed (colour follows
-# the category, never its rank), so filtering never repaints the survivors.
-TYPE_COLORS <- c(
-  "Missense"       = "#0072B2",  # blue
-  "Combination"    = "#56B4E9",  # sky blue
-  "Deletion"       = "#E69F00",  # orange
-  "Insertion"      = "#009E73",  # bluish green
-  "Premature stop" = "#000000",  # black (truncating)
-  "Frameshift"     = "#D55E00",  # vermillion
-  "Position only"  = "#CC79A7"   # reddish purple
-)
-
-# Chart chrome & ink — recessive surfaces, hairline grid, muted axis text, so the
-# data is the only thing allowed to be loud.
-CHROME <- list(
-  surface  = "#ffffff",  # chart surface (clean white for a print-like look)
-  ink      = "#1a1a1a",  # primary text
-  ink2     = "#4a4a4a",  # secondary text (axis titles)
-  muted    = "#8a8a8a",  # axis ticks / labels
-  grid     = "#ececec",  # hairline gridline
-  backbone = "#d9d9d9",  # protein backbone track
-  domain   = "#595959",  # hot-spot domain box on the backbone
-  stem     = "#bcbcbc",  # lollipop stems
-  band     = "#000000"   # hot-spot vertical guide (used at very low alpha)
-)
 
 # =============================================================================
 # DATA LAYER
@@ -189,7 +148,7 @@ build_mutation_summary <- function(data) {
       anf_worst = ifelse(is.na(anf_worst), "", anf_worst),
       cas_worst = ifelse(is.na(cas_worst), "", cas_worst),
       mcf_worst = ifelse(is.na(mcf_worst), "", mcf_worst),
-      # Evidence level drives lollipop border thickness (brief Stage 2).
+      # Evidence level from the number of supporting references.
       evidence  = case_when(
         n_refs >= 5 ~ "strong (5+ refs)",
         n_refs >= 2 ~ "moderate (2-4 refs)",
@@ -259,146 +218,12 @@ ncbi_link <- function(pmid, doi) {
 APP_DATA    <- load_data("data")
 MUT_SUMMARY <- build_mutation_summary(APP_DATA)
 
-# Backbone length per gene = furthest observed residue (+ small pad), computed
-# once so the protein track stays a fixed size when the plot is filtered.
-GENE_LEN <- MUT_SUMMARY %>%
-  filter(gene %in% c("FKS1", "FKS2"), !is.na(position)) %>%
-  group_by(gene) %>%
-  summarise(len = max(position) + 25, .groups = "drop")
-GENE_LEN <- setNames(GENE_LEN$len, GENE_LEN$gene)
-
-# =============================================================================
-# LOLLIPOP PLOT (Stage 2)
-# =============================================================================
-# A publication-style needle plot: FKS1 on top, FKS2 below. Each gene is drawn
-# as a light protein backbone track with its HS1/HS2 hot-spot domains marked;
-# mutations rise as lollipops whose colour = mutation type and height = number
-# of reporting studies. The reference axis is square-root-compressed so a single
-# heavily-reported residue (e.g. S629P, ~40 studies) doesn't flatten everything
-# else. Returns a plotly object carrying mutation_id as customdata for clicks.
-make_lollipop <- function(df) {
-
-  # -- Only positioned single mutations in FKS1/FKS2 sit on a residue axis. -----
-  plot_df <- df %>%
-    filter(gene %in% c("FKS1", "FKS2"), !is.na(position)) %>%
-    mutate(
-      gene   = factor(gene, levels = c("FKS1", "FKS2")),
-      n_refs = pmax(n_refs, 1L),          # 1 so single-study hits are visible
-      y      = sqrt(n_refs),              # square-root-compressed stem height
-      # Head diameter grows gently with evidence (min ~9px so every head is a target).
-      head   = 3.2 + 5.0 * sqrt(n_refs / max(n_refs, na.rm = TRUE)),
-      tip = paste0(
-        "<b>", mutation_name, "</b>",
-        "<br>", gene, "  |  ", hotspot,   # plain ASCII separator (no encoding quirks)
-        "<br>Type: ", mutation_type,
-        "<br>Studies: ", n_refs
-      )
-    ) %>%
-    droplevels()                          # drop an empty gene panel when filtered
-
-  genes_shown <- levels(plot_df$gene)
-  max_y <- sqrt(max(plot_df$n_refs))
-
-  # -- Needle-plot geometry: the backbone track sits below the y=0 baseline; ----
-  #    lollipops rise above it; hot-spot labels sit just under the backbone.
-  bb_top  <- -0.10 * max_y
-  bb_bot  <- -0.30 * max_y
-  label_y <- -0.44 * max_y
-
-  # Backbone bar, one per shown gene, spanning residue 1 .. protein length.
-  backbone <- data.frame(
-    gene = factor(names(GENE_LEN), levels = c("FKS1", "FKS2")),
-    xmin = 1, xmax = as.numeric(GENE_LEN)
-  ) %>% filter(gene %in% genes_shown) %>% droplevels()
-
-  # Hot-spot domains drawn on the backbone.
-  bands <- do.call(rbind, lapply(names(HOTSPOTS), function(g) {
-    do.call(rbind, lapply(names(HOTSPOTS[[g]]), function(hs) {
-      rng <- HOTSPOTS[[g]][[hs]]
-      data.frame(gene = g, hs = hs, xmin = rng[1], xmax = rng[2],
-                 xmid = mean(rng), stringsAsFactors = FALSE)
-    }))
-  }))
-  bands <- bands %>% filter(gene %in% genes_shown)
-  bands$gene <- factor(bands$gene, levels = genes_shown)
-
-  # Direct-label the most-reported residue in each gene (label the extreme only).
-  peaks <- plot_df %>% group_by(gene) %>% slice_max(n_refs, n = 1, with_ties = FALSE)
-
-  # Square-root axis: place ticks at clean study counts.
-  brks <- c(1, 2, 5, 10, 20, 40, 60)
-  brks <- brks[brks <= max(plot_df$n_refs)]
-
-  p <- ggplot(plot_df) +
-    # faint vertical guide over each hot spot (neutral, so it fights no hue)
-    geom_rect(data = bands,
-              aes(xmin = xmin, xmax = xmax, ymin = bb_bot, ymax = Inf),
-              fill = CHROME$band, alpha = 0.035, inherit.aes = FALSE) +
-    # protein backbone track
-    geom_rect(data = backbone,
-              aes(xmin = xmin, xmax = xmax, ymin = bb_bot, ymax = bb_top),
-              fill = CHROME$backbone, inherit.aes = FALSE) +
-    # hot-spot domain boxes on the backbone, labelled just beneath
-    geom_rect(data = bands,
-              aes(xmin = xmin, xmax = xmax, ymin = bb_bot, ymax = bb_top),
-              fill = CHROME$domain, inherit.aes = FALSE) +
-    geom_text(data = bands, aes(x = xmid, y = label_y, label = hs),
-              inherit.aes = FALSE, colour = CHROME$ink2, size = 3.1,
-              fontface = "bold") +
-    # lollipop stems
-    geom_segment(aes(x = position, xend = position, y = 0, yend = y),
-                 colour = CHROME$stem, linewidth = 0.45) +
-    # lollipop heads — white surface ring keeps overlaps legible
-    geom_point(aes(x = position, y = y, fill = mutation_type, size = head,
-                   text = tip, customdata = mutation_id),
-               shape = 21, colour = CHROME$surface, stroke = 1.0) +
-    # name the single tallest lollipop per gene
-    geom_text(data = peaks, aes(x = position, y = y, label = mutation_name),
-              inherit.aes = FALSE, vjust = -1.1, size = 3.2, colour = CHROME$ink) +
-    scale_fill_manual(values = TYPE_COLORS, name = NULL, drop = TRUE) +
-    scale_size_identity() +
-    scale_y_continuous(breaks = sqrt(brks), labels = brks,
-                       expand = expansion(mult = c(0.04, 0.14))) +
-    facet_wrap(~ gene, ncol = 1, scales = "free_x") +
-    labs(x = "Residue position", y = "Reporting studies") +
-    theme_minimal(base_size = 14) +
-    theme(
-      text              = element_text(colour = CHROME$ink2),
-      axis.text         = element_text(colour = CHROME$muted, size = 11),
-      axis.title        = element_text(colour = CHROME$ink2),
-      axis.title.x      = element_text(margin = margin(t = 8)),
-      axis.ticks        = element_blank(),
-      panel.grid.minor  = element_blank(),
-      panel.grid.major.x = element_blank(),
-      panel.grid.major.y = element_line(colour = CHROME$grid, linewidth = 0.4),
-      panel.spacing     = unit(26, "pt"),
-      strip.text        = element_text(face = "bold", size = 14, hjust = 0,
-                                       colour = CHROME$ink),
-      plot.background   = element_rect(fill = CHROME$surface, colour = NA),
-      panel.background  = element_rect(fill = CHROME$surface, colour = NA),
-      legend.position   = "bottom"
-    )
-
-  ggplotly(p, tooltip = "text", source = "lollipop") %>%
-    layout(
-      # Centre the horizontal legend under the plot. (Anchoring it at x = 0 with
-      # xanchor "center" put half of it off the left edge, and plotly's autoexpand
-      # then inflated the left margin — which is what wasted the plot's width.)
-      legend = list(orientation = "h", y = -0.10, x = 0.5, xanchor = "center",
-                    title = list(text = ""), font = list(size = 12)),
-      paper_bgcolor = CHROME$surface, plot_bgcolor = CHROME$surface,
-      margin = list(t = 34, r = 20, l = 60, b = 40)
-    ) %>%
-    config(displayModeBar = FALSE, responsive = TRUE) %>%
-    event_register("plotly_click")
-}
-
 # =============================================================================
 # USER INTERFACE
 # =============================================================================
 # Flatly's link/accent colour is teal-green (#18bc9c); recolour it blue so links,
 # the active tab, and the table's page numbers read blue instead of green.
-BLUE      <- "#0072B2"   # matches the Missense blue in the lollipop plot
+BLUE      <- "#0072B2"   # primary accent / link colour (recolours flatly's green)
 BLUE_DARK <- "#005b8f"
 
 ui <- page_sidebar(
@@ -452,7 +277,7 @@ ui <- page_sidebar(
     )
   ),
 
-  # ---- Main area: tabs for table+detail and the lollipop plot ----
+  # ---- Main area: tabs for the table+detail view and Terms of Use ----
   navset_card_tab(
     id = "main_tabs",
 
@@ -476,17 +301,100 @@ ui <- page_sidebar(
       )
     ),
 
-    # Tab 2: lollipop plot
+    # Tab 2: Terms of Use (purpose, disclaimer, citation, contact)
     nav_panel(
-      "Lollipop plot",
+      "Terms of Use",
       card(
-        full_screen = TRUE,
-        card_header("FKS1 (top) and FKS2 (bottom) — click a lollipop to select"),
-        # fillable = FALSE stops bslib from shrinking the plot to the viewport,
-        # so the fixed height is honoured and each gene panel gets real room.
         card_body(
-          fillable = FALSE,
-          plotlyOutput("lollipop", height = "800px")
+          div(
+            style = "max-width: 820px; margin: 0 auto; line-height: 1.6;",
+            tags$h4("Terms of Use"),
+            tags$p(class = "text-muted",
+                   "C. glabrata Echinocandin Resistance — FKS1/FKS2 Mutation Database"),
+
+            tags$h5("Purpose"),
+            tags$p(
+              "The ",
+              tags$em("C. glabrata Echinocandin Resistance — FKS1/FKS2 Mutation"),
+              " database is a curated, openly accessible reference resource that catalogues ",
+              tags$em("FKS1"), " and ", tags$em("FKS2"),
+              " mutations reported in ", tags$em("Candida glabrata"), " (",
+              tags$em("Nakaseomyces glabratus"),
+              ") and their association with echinocandin susceptibility (anidulafungin, ",
+              "caspofungin, and micafungin). It consolidates mutation–phenotype data from ",
+              "the peer-reviewed literature into a single, nomenclature-harmonized resource to ",
+              "support research, surveillance, and reference-level interpretation of ",
+              tags$em("FKS"), " genotypes."
+            ),
+
+            tags$h5("Intended use"),
+            div(
+              class = "alert alert-warning", role = "alert",
+              tags$strong("This database is not a diagnostic device."),
+              " It is provided as a research and educational reference and a decision-support ",
+              "aid for interpreting ", tags$em("FKS"),
+              " sequence data, and is not a substitute for laboratory antifungal ",
+              "susceptibility testing, current CLSI or EUCAST clinical breakpoints, ",
+              "institutional or society treatment guidelines, or the judgment of a qualified ",
+              "clinician or clinical microbiologist. Clinical decisions must not be based ",
+              "solely on this resource."
+            ),
+
+            tags$h5("Data sources and limitations"),
+            tags$p(
+              "Entries are derived from published studies and reflect the mutations, ",
+              "susceptibility results, and interpretations ",
+              tags$em("as reported by the original authors"),
+              ". Resistance categories (susceptible / intermediate / resistant) depend on the ",
+              "testing method and breakpoint version used in each source study and may differ ",
+              "from current breakpoints. Where studies disagree, the discordance is displayed ",
+              "rather than resolved. The database may contain errors, omissions, or entries ",
+              "superseded by newer data, and is provided ",
+              tags$strong("“as is,” without warranty"),
+              " of accuracy or completeness. Users are responsible for verifying information ",
+              "against the primary literature before relying on it."
+            ),
+
+            tags$h5("Nomenclature"),
+            tags$p(
+              "Mutations are standardized to the ", tags$em("C. glabrata"),
+              " reference strain ", tags$strong("ATCC 2001 / CBS138"),
+              " (assembly GCF_010111755.1). Historical or alternative designations ",
+              "(e.g., mutations originally reported using ", tags$em("C. albicans"),
+              " numbering) are retained as searchable aliases linked to the corrected entry."
+            ),
+
+            tags$h5("Citation"),
+            tags$p("If you use this database in a publication, presentation, or report, ",
+                   "please cite:"),
+            tags$blockquote(
+              class = "blockquote",
+              tags$p(
+                style = "font-size: 0.95rem;",
+                "Alhamlan F, et al. ",
+                tags$em("C. glabrata Echinocandin Resistance — FKS1/FKS2 Mutation Database"),
+                ". Manuscript in preparation; citation to be updated upon publication."
+              )
+            ),
+
+            tags$h5("Comments and suggestions"),
+            tags$p(
+              "This resource is maintained as a research project and is updated periodically. ",
+              "We welcome corrections, suggestions, and reports of newly published mutations. ",
+              "Please direct any comments to the Principal Investigator:"
+            ),
+            tags$p(
+              tags$strong("Fatimah Alhamlan, PhD"), tags$br(),
+              "Alhamlan Laboratory, King Faisal Specialist Hospital & Research Centre (KFSHRC)",
+              tags$br(),
+              tags$a(href = "mailto:falhamlan@kfshrc.edu.sa", "falhamlan@kfshrc.edu.sa")
+            ),
+
+            tags$hr(),
+            tags$p(class = "text-muted", style = "font-size: 0.85rem;",
+                   "Database version 1.0 · Last updated October 2026 · ",
+                   "Content is subject to revision.")
+          )
         )
       )
     )
@@ -558,17 +466,11 @@ server <- function(input, output, session) {
     if (length(row)) selected_id(filtered()$mutation_id[row])
   })
 
-  # ---- Clicking a lollipop selects that mutation ----------------------------
-  observeEvent(event_data("plotly_click", source = "lollipop"), {
-    ev <- event_data("plotly_click", source = "lollipop")
-    if (!is.null(ev$customdata)) selected_id(ev$customdata)
-  })
-
   # ---- Detail panel ---------------------------------------------------------
   output$detail <- renderUI({
     id <- selected_id()
     if (is.null(id)) {
-      return(tags$em("Select a mutation from the table or the lollipop plot."))
+      return(tags$em("Select a mutation from the table to see its details."))
     }
 
     mut <- MUT_SUMMARY %>% filter(mutation_id == id)
@@ -647,17 +549,6 @@ server <- function(input, output, session) {
       ref_table
     )
   })
-
-  # ---- Lollipop plot (respects the same filters) ----------------------------
-  output$lollipop <- renderPlotly({
-    df <- filtered()
-    validate(need(nrow(df) > 0, "No positioned mutations match the filters."))
-    make_lollipop(df)
-  })
-  # Keep the plot live even while the Table tab is in front, so a filter change
-  # made there is already applied when the user switches to the plot (otherwise
-  # the hidden output is suspended and can show a stale figure).
-  outputOptions(output, "lollipop", suspendWhenHidden = FALSE)
 }
 
 # `%||%` — small null/NA-coalescing helper used in the reference table.
