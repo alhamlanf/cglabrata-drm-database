@@ -328,8 +328,7 @@ ui <- page_sidebar(
             ),
 
             tags$h5("Intended use"),
-            div(
-              class = "alert alert-warning", role = "alert",
+            tags$p(
               tags$strong("This database is not a diagnostic device."),
               " It is provided as a research and educational reference and a decision-support ",
               "aid for interpreting ", tags$em("FKS"),
@@ -385,8 +384,8 @@ ui <- page_sidebar(
             ),
             tags$p(
               tags$strong("Fatimah Alhamlan, PhD"), tags$br(),
-              "Alhamlan Laboratory, King Faisal Specialist Hospital & Research Centre (KFSHRC)",
-              tags$br(),
+              "Dr. AlHamlan’s Lab – Research and Innovation", tags$br(),
+              "King Faisal Specialist Hospital & Research Centre", tags$br(),
               tags$a(href = "mailto:falhamlan@kfshrc.edu.sa", "falhamlan@kfshrc.edu.sa")
             ),
 
